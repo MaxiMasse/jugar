@@ -1,38 +1,199 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
-  text-align: center;
+  min-height: 100vh;
+  width: 100vw;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Background images for different screen sizes */
+.App::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./images/1234.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 1;
+  z-index: -1;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Mobile background image */
+@media (max-width: 768px) {
+  .App::before {
+    background-image: url('./images/1234.jpeg');
+    background-attachment: cover;
   }
 }
 
-.App-header {
-  background-color: #282c34;
+.landing-container {
   min-height: 100vh;
+  width: 100vw;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-section {
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
   color: white;
+  margin-bottom: 1.5rem;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.App-link {
-  color: #61dafb;
+.hero-subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.whatsapp-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #25D366;
+  color: white;
+  border: none;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  text-decoration: none;
+  font-family: inherit;
+}
+
+.whatsapp-button:hover {
+  background: #128C7E;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-button:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .landing-container {
+    padding: 16px;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .hero-section {
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
   }
+  
+  .hero-title {
+    margin-bottom: 1rem;
+  }
+  
+  .hero-subtitle {
+    margin-bottom: 2.5rem;
+  }
+  
+  .whatsapp-button {
+    padding: 14px 28px;
+    font-size: 1rem;
+    gap: 10px;
+  }
+  
+  .whatsapp-icon {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-section {
+    padding: 1.5rem 1rem;
+    border-radius: 12px;
+  }
+  
+  .hero-title {
+    margin-bottom: 0.8rem;
+  }
+  
+  .hero-subtitle {
+    margin-bottom: 2rem;
+  }
+  
+  .whatsapp-button {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    gap: 8px;
+  }
+  
+  .whatsapp-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Animation for the button */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+  }
+  100% {
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.3);
+  }
+}
+
+.whatsapp-button {
+  animation: pulse 2s infinite;
+}
+
+.whatsapp-button:hover {
+  animation: none;
 }
