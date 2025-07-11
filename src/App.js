@@ -2,10 +2,7 @@ import './App.css';
 
 function App() {
   const handleWhatsAppClick = () => {
-    // Replace with your actual WhatsApp number
-    const phoneNumber = '1234567890';
-    const message = 'Hello! I would like to get in touch.';
-    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://api.whatsapp.com/send?phone=542235906504&text=Quiero%20crear%20un%20usuario!!%F0%9F%98%81%F0%9F%94%A5%F0%9F%92%B5`;
     window.open(whatsappUrl, '_blank');
   };
 
